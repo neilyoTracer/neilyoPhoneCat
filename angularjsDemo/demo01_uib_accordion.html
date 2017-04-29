@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/animate.css"/>
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/angular-ui-router.js"></script>
+  <script src="js/ui-bootstrap-tpls-1.3.2.js"></script>
+  <style>
+    .active{
+      background: #f00;  
+    }
+  </style>
+</head>
+<body>
+
+
+<div ng-controller="AccordionDemoCtrl">
+  <uib-accordion>
+    <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+      {{group.content}}
+    </uib-accordion-group>
+    <uib-accordion-group heading="elset">
+      <p>Please,to delete your account,click the button below</p>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>
+<script>
+  var app = angular.module('myApp',['ui.bootstrap']);
+
+  app.controller('AccordionDemoCtrl',['$scope',function($scope){
+    $scope.groups = [
+      {title:'Dynamic Group Header - 1',content:'Dynamic Group Body - 1'},
+      {title:'Dynamic Group Header - 2',content:'Dynamic Group Body - 2'}
+    ]
+  }])
+
+/*  uib-accordion 设置
+
+  1:"close-others":true/false.一个折叠打开的时候,其他折叠关闭,默认为"true".
+
+  <uib-accordion close-others="false">
+
+ 2:"template-url": 指定模板地址
+
+  <uib-accordion template-url="setting/setting.html">
+
+  */
+
+/*
+ * uib-accordion-group设置
+ *
+ * 1:"heading":设置折叠可点击的头部
+ * <uib-accordion-group heading="Dynamic Body Content">
+ *
+ * 2:"is-disabled": true/false 默认"false",是否禁用折叠
+ * <uib-accordion-group heading="elset" is-disabled="true">
+ *
+ * 3:"is-open":true/false 默认"false",折叠是否展开
+ * <uib-accordion-group is-open="true">
+ *
+ * 4:"panel-class":给折叠设置样式类
+ * <uib-accordion-group panel-class="active">
+ *
+ * 5: "template-url":指定模板地址
+ *<uib-accordion-group heading="elset" template-url="tl.html">
+ * */
+</script>
+</body>
+</html>
